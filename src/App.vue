@@ -39,7 +39,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   input {
     width: 100%;
     outline: none;
@@ -58,16 +58,29 @@ export default {
   .todo {
     width: 800px;
     margin: 0 auto;
-  }
 
-  .todo__header {
-    text-align: center;
-    font-weight: 500;
-  }
+    &__header {
+      text-align: center;
+      font-weight: 500;
+    }
 
-  .todo__action {
-    display: flex;
-    margin: 10px 0 40px;
+    &__action {
+      display: flex;
+      margin: 10px 0 40px;
+    }
+
+    &__task {
+      width: 60%;
+      text-align: left;
+    }
+
+    &__status {
+      width: 30%;
+    }
+
+    &__icon {
+      width: 5%;
+    }
   }
 
   table, th, td {
@@ -80,21 +93,8 @@ export default {
     width: 100%;
   }
 
-  .todo__task {
-    width: 60%;
-    text-align: left;
-  }
-
-  .todo__status {
-    width: 30%;
-  }
-
   .task__status {
     text-align: center;
     cursor: pointer;
-  }
-
-  .todo__icon {
-    width: 5%;
   }
 </style>
