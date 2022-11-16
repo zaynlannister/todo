@@ -2,8 +2,8 @@
   <div class="todo">
     <h2 class="todo__header">My Vue Todo App</h2>
     <div class="todo__action">
-      <input class="input default-border" type="text" placeholder="Enter task">
-      <button class="btn">SUBMIT</button>
+      <input v-model="inputValue" class="input default-border" type="text" placeholder="Enter task">
+      <button @click="addTask" class="btn">SUBMIT</button>
     </div>
 
     <table class="table">
@@ -16,8 +16,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>cook dinner</td>
+      <tr v-for="task in tasks">
+        <td>{{ task.title }}</td>
         <td class="task__status">To-do</td>
         <td>
           <div class="task__icon">
@@ -25,21 +25,7 @@
           </div>
         </td>
         <td>
-          <div class="task__icon">
-            <span class="fa fa-trash"></span>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>learn js</td>
-        <td class="task__status">To-do</td>
-        <td>
-          <div class="task__icon">
-            <span class="fa fa-pen"></span>
-          </div>
-        </td>
-        <td>
-          <div class="task__icon">
+          <div @click="deleteTask(task)" class="task__icon">
             <span class="fa fa-trash"></span>
           </div>
         </td>
@@ -51,7 +37,29 @@
 
 <script>
 export default {
+  data() {
+    return {
+      inputValue: '',
+      tasks: [
+        {id: 1, title: "cook dinner"},
+        {id: 2, title: "learn js"}
+      ]
+    }
+  },
 
+  methods: {
+    addTask() {
+      this.tasks.push({
+        id: Date.now(),
+        title: this.inputValue
+      })
+      this.inputValue = '';
+    },
+
+    deleteTask(task) {
+      this.tasks = this.tasks.filter(item => item.id !== task.id);
+    }
+  }
 }
 </script>
 
