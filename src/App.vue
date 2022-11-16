@@ -19,14 +19,30 @@
       <tr>
         <td>cook dinner</td>
         <td class="task__status">To-do</td>
-        <td>icon</td>
-        <td>icon</td>
+        <td>
+          <div class="task__icon">
+            <span class="fa fa-pen"></span>
+          </div>
+        </td>
+        <td>
+          <div class="task__icon">
+            <span class="fa fa-trash"></span>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>learn js</td>
         <td class="task__status">To-do</td>
-        <td>icon</td>
-        <td>icon</td>
+        <td>
+          <div class="task__icon">
+            <span class="fa fa-pen"></span>
+          </div>
+        </td>
+        <td>
+          <div class="task__icon">
+            <span class="fa fa-trash"></span>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -103,8 +119,16 @@ export default {
     width: 100%;
   }
 
-  .task__status {
-    text-align: center;
-    cursor: pointer;
+  .task {
+    &__icon {
+      width: fit-content;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    &__status {
+      text-align: center;
+      cursor: pointer;
+    }
   }
 </style>
