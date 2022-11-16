@@ -2,8 +2,8 @@
   <div class="todo">
     <h2 class="todo__header">My Vue Todo App</h2>
     <div class="todo__action">
-      <input class="default-border" type="text" placeholder="Enter task">
-      <button>SUBMIT</button>
+      <input class="input default-border" type="text" placeholder="Enter task">
+      <button class="btn">SUBMIT</button>
     </div>
 
     <table class="table">
@@ -40,19 +40,29 @@ export default {
 </script>
 
 <style lang="scss">
-  input {
+  .input {
     width: 100%;
     outline: none;
     padding: 10px;
     border: 1px solid #b2b2b2;
+    transition: 120ms all;
+
+    &:focus {
+      border-color: #000000;
+    }
   }
 
-  button {
+  .btn {
     cursor: pointer;
     outline: none;
     width: 100px;
     border: none;
     background-color: #fec000;
+    transition: 120ms all;
+
+    &:hover {
+      background-color: #efac02;
+    }
   }
 
   .todo {
