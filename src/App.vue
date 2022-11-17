@@ -20,7 +20,7 @@
         <td>{{ task.title }}</td>
         <td class="task__status">{{ task.status }}</td>
         <td>
-          <div class="task__icon">
+          <div @click="editTask(task)" class="task__icon">
             <span class="fa fa-pen"></span>
           </div>
         </td>
@@ -40,6 +40,7 @@ export default {
   data() {
     return {
       inputValue: '',
+      editedTask: null,
       tasks: [
         {id: 1, title: "cook dinner", status: "to-do"},
         {id: 2, title: "learn js", status: "to-do"}
@@ -49,16 +50,29 @@ export default {
 
   methods: {
     addTask() {
-      this.tasks.push({
-        id: Date.now(),
-        status: "to-do",
-        title: this.inputValue
-      })
-      this.inputValue = '';
+      if (this.inputValue.length === 0) return;
+
+      if (this.editedTask === null) {
+        this.tasks.push({
+          id: Date.now(),
+          status: "to-do",
+          title: this.inputValue
+        })
+        this.inputValue = "";
+      } else {
+        this.editedTask.title = this.inputValue;
+        this.inputValue = "";
+        this.editedTask = null;
+      }
     },
 
     deleteTask(task) {
       this.tasks = this.tasks.filter(item => item.id !== task.id);
+    },
+
+    editTask(task) {
+      this.inputValue = task.title;
+      this.editedTask = task;
     }
   }
 }
