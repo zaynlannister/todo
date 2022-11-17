@@ -18,7 +18,7 @@
       <tbody>
       <tr v-for="task in tasks">
         <td>{{ task.title }}</td>
-        <td class="task__status">To-do</td>
+        <td class="task__status">{{ task.status }}</td>
         <td>
           <div class="task__icon">
             <span class="fa fa-pen"></span>
@@ -41,8 +41,8 @@ export default {
     return {
       inputValue: '',
       tasks: [
-        {id: 1, title: "cook dinner"},
-        {id: 2, title: "learn js"}
+        {id: 1, title: "cook dinner", status: "to-do"},
+        {id: 2, title: "learn js", status: "to-do"}
       ]
     }
   },
@@ -51,6 +51,7 @@ export default {
     addTask() {
       this.tasks.push({
         id: Date.now(),
+        status: "to-do",
         title: this.inputValue
       })
       this.inputValue = '';
