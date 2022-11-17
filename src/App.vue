@@ -16,7 +16,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="task in tasks">
+      <tr v-for="task in tasks" :key="task.id">
         <td>{{ task.title }}</td>
         <td class="task__status">{{ task.status }}</td>
         <td>
