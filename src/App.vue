@@ -18,7 +18,7 @@
       <tbody>
       <tr v-for="task in tasks" :key="task.id">
         <td>{{ task.title }}</td>
-        <td class="task__status">{{ task.status }}</td>
+        <td @click="changeStatus(task)" class="task__status"><span>{{ task.status }}</span></td>
         <td>
           <div @click="editTask(task)" class="task__icon">
             <span class="fa fa-pen"></span>
@@ -39,8 +39,9 @@
 export default {
   data() {
     return {
-      inputValue: '',
+      inputValue: "",
       editedTask: null,
+      availableStatuses: ["to-do", "in-progress", "finished"],
       tasks: [
         {id: 1, title: "cook dinner", status: "to-do"},
         {id: 2, title: "learn js", status: "to-do"}
@@ -73,6 +74,16 @@ export default {
     editTask(task) {
       this.inputValue = task.title;
       this.editedTask = task;
+    },
+
+    changeStatus(task) {
+      let newIndex = this.availableStatuses.indexOf(task.status);
+
+      if (++newIndex > 2) {
+        newIndex = 0;
+      }
+
+      task.status = this.availableStatuses[newIndex];
     }
   }
 }
