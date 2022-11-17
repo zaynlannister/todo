@@ -17,8 +17,20 @@
       </thead>
       <tbody>
       <tr v-for="task in tasks" :key="task.id">
-        <td>{{ task.title }}</td>
-        <td @click="changeStatus(task)" class="task__status"><span>{{ task.status }}</span></td>
+        <td>
+          <span
+            :class="{'finished': task.status === 'finished'}"
+          >{{ task.title }}</span>
+        </td>
+        <td @click="changeStatus(task)" class="task__status">
+          <span
+            :class="{
+              'to-do': task.status === 'to-do',
+              'in-progress': task.status === 'in-progress',
+              'finished-status': task.status === 'finished',
+            }"
+          >{{ task.status }}</span>
+        </td>
         <td>
           <div @click="editTask(task)" class="task__icon">
             <span class="fa fa-pen"></span>
@@ -163,6 +175,23 @@ export default {
     &__status {
       text-align: center;
       cursor: pointer;
+      user-select: none;
     }
+  }
+
+  .finished {
+    text-decoration: line-through;
+  }
+
+  .in-progress {
+    color: #012cca;
+  }
+
+  .to-do {
+    color: #d70606;
+  }
+
+  .finished-status {
+    color: #069e67;
   }
 </style>
