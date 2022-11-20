@@ -1,54 +1,30 @@
 <template>
   <div class="todo">
     <h2 class="todo__header">My Vue Todo App</h2>
-    <div class="todo__action">
-      <input v-model="inputValue" class="input default-border" type="text" placeholder="Enter task">
-      <button @click="addTask" class="btn">SUBMIT</button>
-    </div>
 
-    <table class="table">
-      <thead>
-      <tr>
-        <th class="todo__task">Task</th>
-        <th class="todo__status">Status</th>
-        <th class="todo__icon">#</th>
-        <th class="todo__icon">#</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="task in tasks" :key="task.id">
-        <td>
-          <span
-            :class="{'finished': task.status === 'finished'}"
-          >{{ task.title }}</span>
-        </td>
-        <td @click="changeStatus(task)" class="task__status">
-          <span
-            :class="{
-              'to-do': task.status === 'to-do',
-              'in-progress': task.status === 'in-progress',
-              'finished-status': task.status === 'finished',
-            }"
-          >{{ task.status }}</span>
-        </td>
-        <td>
-          <div @click="editTask(task)" class="task__icon">
-            <span class="fa fa-pen"></span>
-          </div>
-        </td>
-        <td>
-          <div @click="deleteTask(task)" class="task__icon">
-            <span class="fa fa-trash"></span>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <post-form
+      @create="addTask"
+    />
+
+    <task-table
+      :tasks="tasks"
+      @delete="deleteTask"
+      @edit="editTask"
+      @change="changeStatus"
+    />
   </div>
 </template>
 
 <script>
+import PostForm from "@/Components/PostForm.vue";
+import TaskTable from "@/Components/TaskTable.vue";
+
 export default {
+  components: {
+    PostForm,
+    TaskTable
+  },
+
   data() {
     return {
       inputValue: "",
@@ -62,19 +38,11 @@ export default {
   },
 
   methods: {
-    addTask() {
-      if (this.inputValue.length === 0) return;
-
+    addTask(task) {
       if (this.editedTask === null) {
-        this.tasks.push({
-          id: Date.now(),
-          status: "to-do",
-          title: this.inputValue
-        })
-        this.inputValue = "";
+        this.tasks.push(task);
       } else {
         this.editedTask.title = this.inputValue;
-        this.inputValue = "";
         this.editedTask = null;
       }
     },
@@ -89,6 +57,7 @@ export default {
     },
 
     changeStatus(task) {
+      console.log(task)
       let newIndex = this.availableStatuses.indexOf(task.status);
 
       if (++newIndex > 2) {
