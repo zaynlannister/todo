@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import TaskItem from "@/Components/TaskItem.vue";
+import TaskItem from "@/components/TaskItem.vue";
 
 export default {
   components: {

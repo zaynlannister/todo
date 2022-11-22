@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import PostForm from "@/Components/PostForm.vue";
-import TaskTable from "@/Components/TaskTable.vue";
+import PostForm from "@/components/PostForm.vue";
+import TaskTable from "@/components/TaskTable.vue";
 
 export default {
   components: {
