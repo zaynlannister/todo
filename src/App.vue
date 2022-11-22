@@ -60,7 +60,6 @@ export default {
     },
 
     changeStatus(task) {
-      console.log(task)
       let newIndex = this.availableStatuses.indexOf(task.status);
 
       if (++newIndex > 2) {
