@@ -73,31 +73,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .input {
-    width: 100%;
-    outline: none;
-    padding: 10px;
-    border: 1px solid #b2b2b2;
-    transition: 120ms all;
-
-    &:focus {
-      border-color: #000000;
-    }
-  }
-
-  .btn {
-    cursor: pointer;
-    outline: none;
-    width: 100px;
-    border: none;
-    background-color: #fec000;
-    transition: 120ms all;
-
-    &:hover {
-      background-color: #efac02;
-    }
-  }
-
   .todo {
     width: 800px;
     margin: 0 auto;
@@ -134,35 +109,5 @@ export default {
 
   .table {
     width: 100%;
-  }
-
-  .task {
-    &__icon {
-      width: fit-content;
-      margin: 0 auto;
-      cursor: pointer;
-    }
-
-    &__status {
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-    }
-  }
-
-  .finished {
-    text-decoration: line-through;
-  }
-
-  .in-progress {
-    color: #012cca;
-  }
-
-  .to-do {
-    color: #d70606;
-  }
-
-  .finished-status {
-    color: #069e67;
   }
 </style>

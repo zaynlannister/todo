@@ -38,6 +38,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  .input {
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    border: 1px solid #b2b2b2;
+    transition: 120ms all;
 
-</style>
+    &:focus {
+      border-color: #000000;
+    }
+  }
+
+  .btn {
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+    border: none;
+    background-color: #fec000;
+    transition: 120ms all;
+
+    &:hover {
+      background-color: #efac02;
+    }
+  }
+  </style>

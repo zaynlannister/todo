@@ -43,6 +43,34 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  .task {
+    &__icon {
+      width: fit-content;
+      margin: 0 auto;
+      cursor: pointer;
+    }
 
+    &__status {
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+
+  .finished {
+    text-decoration: line-through;
+  }
+
+  .in-progress {
+    color: #012cca;
+  }
+
+  .to-do {
+    color: #d70606;
+  }
+
+  .finished-status {
+    color: #069e67;
+  }
 </style>
