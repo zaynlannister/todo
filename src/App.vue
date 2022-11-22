@@ -31,10 +31,7 @@ export default {
       inputValue: "",
       editedTask: null,
       availableStatuses: ["to-do", "in-progress", "finished"],
-      tasks: [
-        {id: 1, title: "cook dinner", status: "to-do"},
-        {id: 2, title: "learn js", status: "to-do"}
-      ]
+      tasks: []
     }
   },
 
