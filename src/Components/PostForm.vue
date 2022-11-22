@@ -1,6 +1,6 @@
 <template>
   <div class="todo__action">
-    <input v-model="inputValue" class="input default-border" type="text" placeholder="Enter task">
+    <input v-on:keydown.enter="addTask" v-model="inputValue" class="input default-border" type="text" placeholder="Enter task">
     <button @click="addTask" class="btn">SUBMIT</button>
   </div>
 </template>
