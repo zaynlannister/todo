@@ -4,6 +4,7 @@
 
     <post-form
       @create="addTask"
+      v-model="inputValue"
     />
 
     <task-table
@@ -39,11 +40,13 @@ export default {
 
   methods: {
     addTask(task) {
-      if (this.editedTask === null) {
-        this.tasks.push(task);
-      } else {
-        this.editedTask.title = this.inputValue;
+      if (this.editedTask) {
+        const taskIndex = this.tasks.findIndex(item => item.id === this.editedTask.id);
+        this.tasks[taskIndex] = task;
+
         this.editedTask = null;
+      } else {
+        this.tasks.push(task);
       }
     },
 
